@@ -13,6 +13,16 @@ use function json_encode;
 
 final class RequestTest extends BaseValidatorTest
 {
+    public function testValidatesJson() : void
+    {
+        $request = $this->makeGoodRequest('/request-body', 'post');
+
+        $validator = (new ValidatorBuilder())->fromYamlFile(__DIR__ . '/../stubs/yakpdfnew.yaml')->getRequestValidator();
+        $validator->validate($request);
+
+        $this->addToAssertionCount(1);
+    }
+
     public function testItValidatesMessageGreen() : void
     {
         $request = $this->makeGoodRequest('/path1', 'get');

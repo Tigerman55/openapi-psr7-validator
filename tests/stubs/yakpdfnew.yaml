@@ -1,0 +1,39 @@
+openapi: 3.0.2
+info:
+  title: yakpdf
+  x-logo:
+    url: https://yakpdf.com/assets/img/logo-black.png
+    backgroundColor: "#FFFFFF"
+    altText: yakpdf logo
+  version: '1.0'
+  contact:
+    email: info@yakpdf.com
+    url: https://yakpdf.com/
+servers:
+  - url: https://yakpdf.p.rapidapi.com/pdf
+tags:
+  - name: Generate a PDF
+paths:
+  /request-body:
+    post:
+      summary: Request post with body payload
+      requestBody:
+        description: Request body
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+          text/plain:
+            schema:
+              type: string
+      responses:
+        200:
+          description: Created
+          content:
+            text/plain:
+              schema:
+                type: string
